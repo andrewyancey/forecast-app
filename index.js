@@ -74,6 +74,7 @@ function buildWeatherURL(location) {
 }
 
 function showData(weather) {
+    document.querySelector(".weather-area").style.display = "block";
     document.querySelector("#temp").textContent = weather.temp;
     document.querySelector("#humidity").textContent = weather.humidity;
     document.querySelector("#pressure").textContent = weather.pressure;
