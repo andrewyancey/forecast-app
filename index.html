@@ -4,34 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Current and Forecast Weather</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-    <h1>Current Weather and Forecast</h1>
-    <form id="input-form">
-        <h2>Enter your area code</h2>
-        <input type="text" id="zip" />
-        <input type="submit" value="Get Forecast">
-    </form>
-    <div class="weather-area">
-        <h2>Current Weather</h2>
-        <div class="weather-value">
-            <span>Temperature: </span>
-            <span id="temp"></span>
-        </div>
-        <div class="weather-value">
-            <span>Humidity: </span>
-            <span id="humidity"></span>
-        </div>
-        <div class="weather-value">
-            <span>Pressure: </span>
-            <span id="pressure"></span>
-        </div>
-        <div class="weather-value">
-            <span>Precipitation: </span>
-            <span id="precipitation"></span>
+    <div class="header">
+        <h1>Current Weather and Forecast</h1>
+    </div>
+    <div class="content-container">
+        <form id="input-form">
+            <h2>Enter your area code</h2>
+            <input type="text" id="zip" />
+            <input type="submit" value="Get Forecast">
+        </form>
+        <div class="weather-area">
+            <h2>Current Weather</h2>
+            <div class="weather-value">
+                <span>Temperature: </span>
+                <span id="temp"></span>
+                <span class="weather-unit">°F</span>
+            </div>
+            <div class="weather-value">
+                <span>Humidity: </span>
+                <span id="humidity"></span>
+                <span class="weather-unit">%</span>
+            </div>
+            <div class="weather-value">
+                <span>Pressure: </span>
+                <span id="pressure"></span>
+                <span class="weather-unit">mb</span>
+            </div>
+            <div class="weather-value">
+                <span>Precipitation: </span>
+                <span id="precipitation"></span>
+                <span class="weather-unit">"</span>
+            </div>
         </div>
     </div>
 
