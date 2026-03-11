@@ -8,13 +8,14 @@ async function formSubmit(event) {
     else {
         var location = await getCoords(zip);
         var weather = await getWeather(location);
+        console.log(weather);
         showData(weather);
     }
 
 }
 
 async function getWeather(location) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.long}&current=temperature_2m&temperature_unit=fahrenheit`
+    const url = buildWeatherURL(location);
 
     const response = await fetch(url);
 
@@ -26,7 +27,10 @@ async function getWeather(location) {
     const current = data.current;
 
     return {
-        temp: current.temperature_2m
+        temp: current.temperature_2m,
+        humidity: current.relative_humidity_2m,
+        precip: current.precipitation,
+        pressure: current.surface_pressure
     }
 }
 
@@ -54,9 +58,26 @@ async function getCoords(zip) {
     }
 }
 
-function showData(weather)
-{
+function buildWeatherURL(location) {
+    const url = new URL("https://api.open-meteo.com/v1/forecast");
+
+    url.search = new URLSearchParams({
+        latitude: location.lat,
+        longitude: location.long,
+        current: "temperature_2m,relative_humidity_2m,precipitation,surface_pressure",
+        temperature_unit: "fahrenheit",
+        wind_speed_unit: "kn",
+        precipitation_unit: "inch"
+    });
+
+    return url;
+}
+
+function showData(weather) {
     document.querySelector("#temp").textContent = weather.temp;
+    document.querySelector("#humidity").textContent = weather.humidity;
+    document.querySelector("#pressure").textContent = weather.pressure;
+    document.querySelector("#precipitation").textContent = weather.precip;
 }
 
 function addHandlers() {

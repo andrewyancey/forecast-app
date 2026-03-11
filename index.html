@@ -9,13 +9,31 @@
 </head>
 
 <body>
+    <h1>Current Weather and Forecast</h1>
     <form id="input-form">
-        <h3>Enter your area code</h3>
+        <h2>Enter your area code</h2>
         <input type="text" id="zip" />
         <input type="submit" value="Get Forecast">
     </form>
-    <span>Temperature: </span>
-    <span id="temp"></span>
+    <div class="weather-area">
+        <h2>Current Weather</h2>
+        <div class="weather-value">
+            <span>Temperature: </span>
+            <span id="temp"></span>
+        </div>
+        <div class="weather-value">
+            <span>Humidity: </span>
+            <span id="humidity"></span>
+        </div>
+        <div class="weather-value">
+            <span>Pressure: </span>
+            <span id="pressure"></span>
+        </div>
+        <div class="weather-value">
+            <span>Precipitation: </span>
+            <span id="precipitation"></span>
+        </div>
+    </div>
 
     <script src="./index.js"></script>
 </body>
