@@ -7,9 +7,27 @@ async function formSubmit(event) {
     }
     else {
         var location = await getCoords(zip);
-        alert(`lat: ${location.lat}, long: ${location.long}, name:${location.name}`);
+        var weather = await getWeather(location);
+        showData(weather);
     }
 
+}
+
+async function getWeather(location) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.long}&current=temperature_2m&temperature_unit=fahrenheit`
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("failed to fetch weather");
+    }
+
+    const data = await response.json();
+    const current = data.current;
+
+    return {
+        temp: current.temperature_2m
+    }
 }
 
 async function getCoords(zip) {
@@ -34,6 +52,11 @@ async function getCoords(zip) {
         long: location.longitude,
         name: location.name,
     }
+}
+
+function showData(weather)
+{
+    document.querySelector("#temp").textContent = weather.temp;
 }
 
 function addHandlers() {
