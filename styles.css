@@ -30,13 +30,16 @@ h1, h2, h3, p, span {
   text-align: center;
 }
 
-.weather-area {
+.content-area {
+  display: none;
+}
+
+.content-card {
   border: 1px solid var(--accent-color);
   border-radius: 5%;
   width: fit-content;
   padding: .25rem;
   margin: .25rem;
-  display: none;
 }
 
 .weather-unit {

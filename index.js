@@ -8,8 +8,7 @@ async function formSubmit(event) {
     else {
         var location = await getCoords(zip);
         var weather = await getWeather(location);
-        console.log(weather);
-        showData(weather);
+        showData(weather, location);
     }
 
 }
@@ -54,7 +53,8 @@ async function getCoords(zip) {
     return {
         lat: location.latitude,
         long: location.longitude,
-        name: location.name,
+        city: location.name,
+        state: location.admin1
     }
 }
 
@@ -73,12 +73,24 @@ function buildWeatherURL(location) {
     return url;
 }
 
-function showData(weather) {
-    document.querySelector(".weather-area").style.display = "block";
+function showData(weather, location) {
+    document.querySelector(".content-area").style.display = "flex";
+    fillWeatherData(weather);
+    fillLocationData(location);
+}
+
+function fillWeatherData(weather) {
     document.querySelector("#temp").textContent = weather.temp;
     document.querySelector("#humidity").textContent = weather.humidity;
     document.querySelector("#pressure").textContent = weather.pressure;
     document.querySelector("#precipitation").textContent = weather.precip;
+}
+
+function fillLocationData(location) {
+    document.querySelector("#lat").textContent = location.lat;
+    document.querySelector("#long").textContent = location.long;
+    document.querySelector("#city").textContent = location.city;
+    document.querySelector("#state").textContent = location.state;
 }
 
 function addHandlers() {
