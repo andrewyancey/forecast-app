@@ -16,22 +16,15 @@ async function formSubmit(event) {
 
 function showData(weather, location) {
     document.querySelector(".content-area").style.display = "flex";
-    fillWeatherData(weather);
-    fillLocationData(location);
+    fillData(weather);
+    fillData(location);
 }
 
-function fillWeatherData(weather) {
-    document.querySelector("#temp").textContent = weather.temp;
-    document.querySelector("#humidity").textContent = weather.humidity;
-    document.querySelector("#pressure").textContent = weather.pressure;
-    document.querySelector("#precipitation").textContent = weather.precip;
-}
-
-function fillLocationData(location) {
-    document.querySelector("#lat").textContent = location.lat;
-    document.querySelector("#long").textContent = location.long;
-    document.querySelector("#city").textContent = location.city;
-    document.querySelector("#state").textContent = location.state;
+function fillData(data) {
+    Object.entries(data).forEach(([key, value]) => {
+        const el = document.getElementById(key);
+        if (el) el.textContent = value;
+    })
 }
 
 function addHandlers() {

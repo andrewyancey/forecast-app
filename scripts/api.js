@@ -13,7 +13,7 @@ export async function getWeather(location) {
     return {
         temp: current.temperature_2m,
         humidity: current.relative_humidity_2m,
-        precip: current.precipitation,
+        precipitation: current.precipitation,
         pressure: current.surface_pressure
     }
 }
