@@ -5,7 +5,10 @@ const currentWeatherOptions = {
     temperature_2m: "temp",
     relative_humidity_2m: "humidity",
     precipitation: "precipitation",
-    surface_pressure: "pressure"
+    surface_pressure: "pressure",
+    wind_speed_10m: "wind-speed",
+    wind_direction_10m: "wind-direction",
+    wind_gusts_10m: "wind-gusts"
 }
 
 async function formSubmit(event) {
