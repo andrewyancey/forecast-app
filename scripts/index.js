@@ -1,5 +1,13 @@
 import * as api from "./api.js";
 
+// used to decide which values to pull from the API, and which ID they are mapped to
+const currentWeatherOptions = {
+    temperature_2m: "temp",
+    relative_humidity_2m: "humidity",
+    precipitation: "precipitation",
+    surface_pressure: "pressure"
+}
+
 async function formSubmit(event) {
     event.preventDefault();
 
@@ -9,7 +17,7 @@ async function formSubmit(event) {
     }
     else {
         var location = await api.getCoords(zip);
-        var weather = await api.getWeather(location);
+        var weather = await api.getWeather(location, currentWeatherOptions);
         showData(weather, location);
     }
 }

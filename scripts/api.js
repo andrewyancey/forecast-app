@@ -1,5 +1,9 @@
-export async function getWeather(location) {
-    const url = buildWeatherURL(location);
+
+
+export async function getWeather(location, currentWeatherOptions) {
+    if(!currentWeatherOptions) throw new Error("getWeather requires currentWeatherOptions");
+    
+    const url = buildWeatherURL(location, currentWeatherOptions);
 
     const response = await fetch(url);
 
@@ -9,13 +13,28 @@ export async function getWeather(location) {
 
     const data = await response.json();
     const current = data.current;
+    const weather = {};
 
-    return {
-        temp: current.temperature_2m,
-        humidity: current.relative_humidity_2m,
-        precipitation: current.precipitation,
-        pressure: current.surface_pressure
-    }
+    Object.entries(currentWeatherOptions).forEach(([apiField, appField]) => {
+        weather[appField] = current[apiField];
+    });
+
+    return weather;
+}
+
+function buildWeatherURL(location, currentWeatherOptions) {
+    const url = new URL("https://api.open-meteo.com/v1/forecast");
+
+    url.search = new URLSearchParams({
+        latitude: location.lat,
+        longitude: location.long,
+        current: Object.keys(currentWeatherOptions).join(","),
+        temperature_unit: "fahrenheit",
+        wind_speed_unit: "kn",
+        precipitation_unit: "inch"
+    });
+
+    return url;
 }
 
 export async function getCoords(zip) {
@@ -43,17 +62,3 @@ export async function getCoords(zip) {
     }
 }
 
-function buildWeatherURL(location) {
-    const url = new URL("https://api.open-meteo.com/v1/forecast");
-
-    url.search = new URLSearchParams({
-        latitude: location.lat,
-        longitude: location.long,
-        current: "temperature_2m,relative_humidity_2m,precipitation,surface_pressure",
-        temperature_unit: "fahrenheit",
-        wind_speed_unit: "kn",
-        precipitation_unit: "inch"
-    });
-
-    return url;
-}
