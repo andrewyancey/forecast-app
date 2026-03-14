@@ -34,6 +34,11 @@ h1, h2, h3, p, span {
   display: none;
 }
 
+.card-content-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .content-card {
   border: 1px solid var(--accent-color);
   border-radius: 5%;

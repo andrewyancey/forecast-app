@@ -8,7 +8,8 @@ const currentWeatherOptions = {
     surface_pressure: "pressure",
     wind_speed_10m: "wind-speed",
     wind_direction_10m: "wind-direction",
-    wind_gusts_10m: "wind-gusts"
+    wind_gusts_10m: "wind-gusts",
+    weather_code: "weather-code"
 }
 
 async function formSubmit(event) {
