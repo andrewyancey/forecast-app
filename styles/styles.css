@@ -58,6 +58,6 @@ h1, h2, h3, p, span {
   gap: 10px
 }
 
-.input-form {
+#input-form {
     margin: 10px;
 }
