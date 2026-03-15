@@ -61,7 +61,7 @@ export async function getWeather(location, currentWeatherOptions) {
 
         if(apiField === "weather_code")
         {
-            value = convertWeatherCode(value);
+            weather["weather-text"] = convertWeatherCode(value);
         }
         
         weather[appField] = value;
