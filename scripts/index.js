@@ -15,15 +15,15 @@ const currentWeatherOptions = {
 async function formSubmit(event) {
     event.preventDefault();
 
-    var zip = event.currentTarget.querySelector("#zip").value;
-    if (zip.length !== 5) {
+    const zip = event.currentTarget.querySelector("#zip").value.trim();
+    if (!/^\d{5}$/.test(zip)) {
         alert(`you have entered an incompatible zip code: ${zip}`);
+        return;
     }
-    else {
-        var location = await api.getCoords(zip);
-        var weather = await api.getWeather(location, currentWeatherOptions);
-        showData(weather, location);
-    }
+
+    const location = await api.getCoords(zip);
+    const weather = await api.getWeather(location, currentWeatherOptions);
+    showData(weather, location);
 }
 
 function iconFromCode(code) {
