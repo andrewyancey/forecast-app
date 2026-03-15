@@ -63,7 +63,7 @@ function iconFromCode(code) {
 }
 
 function showData(weather, location) {
-    document.querySelector(".content-area").style.display = "flex";
+    document.querySelector(".results-panel").style.display = "flex";
     fillData(weather);
     fillData(location);
     if (weather["weather-code"] !== undefined)

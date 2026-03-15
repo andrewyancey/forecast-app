@@ -30,16 +30,16 @@ h1, h2, h3, p, span {
   text-align: center;
 }
 
-.content-area {
+.results-panel {
   display: none;
 }
 
-.card-content-container {
+.card-data-container {
   display: flex;
   flex-direction: row;
 }
 
-.content-card {
+.data-card {
   border: 1px solid var(--accent-color);
   border-radius: 5%;
   width: fit-content;
@@ -47,7 +47,7 @@ h1, h2, h3, p, span {
   margin: .25rem;
 }
 
-.weather-unit {
+.data-unit {
   font-weight: 800;
 }
 
