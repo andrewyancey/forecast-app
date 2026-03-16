@@ -10,7 +10,16 @@ const currentWeatherOptions = {
     wind_direction_10m: "wind-direction",
     wind_gusts_10m: "wind-gusts",
     weather_code: "weather-code"
-}
+};
+const dailyWeatherOptions = {
+    weather_code: "daily-weather-code",
+    temperature_2m_max: "daily-temperature-max",
+    temperature_2m_min: "daily-temperature-min",
+    precipitation_probability_max: "daily-precipitation-max",
+    wind_speed_10m_max: "daily-wind-speed",
+    wind_gusts_10m_max: "daily-wind-gusts",
+    wind_direction_10m_dominant: "daily-wind-direction"
+};
 
 async function formSubmit(event) {
     event.preventDefault();
@@ -22,11 +31,12 @@ async function formSubmit(event) {
     }
 
     const location = await api.getCoords(zip);
-    const weather = await api.getWeather(location, currentWeatherOptions);
+    const weather = await api.getWeather(location, currentWeatherOptions, dailyWeatherOptions);
     showData(weather, location);
 }
 
 function iconFromCode(code) {
+    // maps WMO weather codes to corresponding svgs
     const weatherCodeIcons = {
         0: "wi-day-sunny.svg",
         1: "wi-day-sunny.svg",
@@ -63,13 +73,37 @@ function iconFromCode(code) {
 }
 
 function showData(weather, location) {
+    const current = weather.current;
+    const daily = weather.daily;
+
     document.querySelector(".results-panel").style.display = "flex";
-    fillData(weather);
+    fillData(current);
     fillData(location);
-    if (weather["weather-code"] !== undefined)
-    {
+    if (current["weather-code"] !== undefined) {
         const iconLocations = "./assets/svg-icons/"
-        document.getElementById("weather-icon").src =  iconLocations + iconFromCode(weather["weather-code"]);
+        document.getElementById("weather-icon").src = iconLocations + iconFromCode(current["weather-code"]);
+    }
+    buildForecast(daily);
+}
+
+function buildForecast(daily) {
+    const container = document.querySelector(".daily-forecast-container");
+
+    for (let i = 0; i < daily.length; i++) {
+        const dayContainer = container.querySelector(`#daily-day${i+1}`);
+        if (!dayContainer) continue;
+
+        Object.entries(daily[i]).forEach(([key, value]) => {
+            if (key === "date") {
+                const dateContainer = dayContainer.querySelector(".date");
+                if(!dateContainer) return;
+                dateContainer.textContent = value;
+            } else {
+                const valueContainer = dayContainer.querySelector("." + key);
+                if(!valueContainer) return;
+                valueContainer.textContent = value;
+            }
+        })
     }
 }
 

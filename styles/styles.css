@@ -58,6 +58,11 @@ h1, h2, h3, p, span {
   gap: 10px
 }
 
+.daily-forecast-container {
+  display: flex;
+  flex-direction: row;
+}
+
 #input-form {
     margin: 10px;
 }

@@ -41,10 +41,10 @@ const WMO_WEATHER_CODES = {
     99: "Thunderstorm with heavy hail"
 };
 
-export async function getWeather(location, currentWeatherOptions) {
+export async function getWeather(location, currentWeatherOptions, dailyWeatherOptions) {
     if (!currentWeatherOptions) throw new Error("getWeather requires currentWeatherOptions");
 
-    const url = buildWeatherURL(location, currentWeatherOptions);
+    const url = buildWeatherURL(location, currentWeatherOptions, dailyWeatherOptions);
 
     const response = await fetch(url);
 
@@ -53,7 +53,13 @@ export async function getWeather(location, currentWeatherOptions) {
     }
 
     const data = await response.json();
-    const current = data.current;
+    const current = mapCurrentToOptions(data.current, currentWeatherOptions);
+    const daily = convertDailytoDays(data.daily, dailyWeatherOptions);
+    return {current, daily};
+}
+
+function mapCurrentToOptions(current, currentWeatherOptions)
+{
     const weather = {};
 
     Object.entries(currentWeatherOptions).forEach(([apiField, appField]) => {
@@ -70,13 +76,26 @@ export async function getWeather(location, currentWeatherOptions) {
     return weather;
 }
 
-function buildWeatherURL(location, currentWeatherOptions) {
+function convertDailytoDays(daily, dailyWeatherOptions) {
+    let days = daily.time.map((date, index) => {
+        const day = {date: date};
+
+        Object.entries(dailyWeatherOptions).forEach(([apiField, appField]) => {
+            day[appField] = daily[apiField][index];
+        })
+        return day;
+    })
+    return days;
+}
+
+function buildWeatherURL(location, currentWeatherOptions, dailyWeatherOptions) {
     const url = new URL("https://api.open-meteo.com/v1/forecast");
 
     url.search = new URLSearchParams({
         latitude: location.lat,
         longitude: location.long,
         current: Object.keys(currentWeatherOptions).join(","),
+        daily: Object.keys(dailyWeatherOptions).join(","),
         temperature_unit: "fahrenheit",
         wind_speed_unit: "kn",
         precipitation_unit: "inch"
