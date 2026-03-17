@@ -30,16 +30,16 @@ h1, h2, h3, p, span {
   text-align: center;
 }
 
-.results-panel {
+.card-container {
   display: none;
 }
 
-.card-data-container {
+.card-section {
   display: flex;
   flex-direction: row;
 }
 
-.data-card {
+.card {
   border: 1px solid var(--accent-color);
   border-radius: 5%;
   width: fit-content;
@@ -51,7 +51,7 @@ h1, h2, h3, p, span {
   font-weight: 800;
 }
 
-.content-container {
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,4 +65,14 @@ h1, h2, h3, p, span {
 
 #input-form {
     margin: 10px;
+}
+
+.forecast-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-details {
+  display: flex;
+  flex-direction: row;
 }

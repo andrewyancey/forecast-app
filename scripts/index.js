@@ -76,7 +76,7 @@ function showData(weather, location) {
     const current = weather.current;
     const daily = weather.daily;
 
-    document.querySelector(".results-panel").style.display = "flex";
+    document.querySelector(".card-container").style.display = "flex";
     fillData(current);
     fillData(location);
     if (current["weather-code"] !== undefined) {
