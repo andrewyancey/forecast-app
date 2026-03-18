@@ -43,7 +43,10 @@ h1, h2, h3, p, span {
 
 .container-row {
   display: flex;
+}
 
+.forecast-row {
+  max-width: 75%;
 }
 
 .card {

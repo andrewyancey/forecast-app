@@ -90,20 +90,26 @@ function buildForecast(daily) {
     const container = document.querySelector(".daily-forecast-container");
 
     for (let i = 0; i < daily.length; i++) {
-        const dayContainer = container.querySelector(`#daily-day${i+1}`);
+        const dayContainer = container.querySelector(`#daily-day${i + 1}`);
         if (!dayContainer) continue;
 
         Object.entries(daily[i]).forEach(([key, value]) => {
             if (key === "date") {
                 const dateContainer = dayContainer.querySelector(".date");
-                if(!dateContainer) return;
+                if (!dateContainer) return;
                 dateContainer.textContent = value;
             } else {
                 const valueContainer = dayContainer.querySelector("." + key);
-                if(!valueContainer) return;
+                if (!valueContainer) return;
                 valueContainer.textContent = value;
             }
         })
+
+        const weatherCode = daily[i]["daily-weather-code"];
+        if (weatherCode !== undefined) {
+            const iconLocations = "./assets/svg-icons/"
+            dayContainer.querySelector(".icon").src = iconLocations + iconFromCode(weatherCode);
+        }
     }
 }
 

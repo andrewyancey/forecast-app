@@ -55,21 +55,19 @@ export async function getWeather(location, currentWeatherOptions, dailyWeatherOp
     const data = await response.json();
     const current = mapCurrentToOptions(data.current, currentWeatherOptions);
     const daily = convertDailytoDays(data.daily, dailyWeatherOptions);
-    return {current, daily};
+    return { current, daily };
 }
 
-function mapCurrentToOptions(current, currentWeatherOptions)
-{
+function mapCurrentToOptions(current, currentWeatherOptions) {
     const weather = {};
 
     Object.entries(currentWeatherOptions).forEach(([apiField, appField]) => {
         let value = current[apiField];
 
-        if(apiField === "weather_code")
-        {
+        if (apiField === "weather_code") {
             weather["weather-text"] = convertWeatherCode(value);
         }
-        
+
         weather[appField] = value;
     });
 
@@ -78,10 +76,16 @@ function mapCurrentToOptions(current, currentWeatherOptions)
 
 function convertDailytoDays(daily, dailyWeatherOptions) {
     let days = daily.time.map((date, index) => {
-        const day = {date: date};
+        const day = { date: date };
 
         Object.entries(dailyWeatherOptions).forEach(([apiField, appField]) => {
-            day[appField] = daily[apiField][index];
+            let value = daily[apiField][index];
+
+            if (apiField === "weather_code") {
+                day["daily-weather-text"] = convertWeatherCode(value);
+            }
+
+            day[appField] = value;
         })
         return day;
     })
