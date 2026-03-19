@@ -30,9 +30,15 @@ async function formSubmit(event) {
         return;
     }
 
-    const location = await api.getCoords(zip);
-    const weather = await api.getWeather(location, currentWeatherOptions, dailyWeatherOptions);
-    showData(weather, location);
+    try {
+        const location = await api.getCoords(zip);
+        const weather = await api.getWeather(location, currentWeatherOptions, dailyWeatherOptions);
+        showData(weather, location);
+    }
+    catch (error) {
+        console.error(error);
+        alert("Something went wrong retrieving data. Please contact the developer, and try again later");
+    }
 }
 
 function iconFromCode(code) {

@@ -75,6 +75,8 @@ function mapCurrentToOptions(current, currentWeatherOptions) {
 }
 
 function convertDailytoDays(daily, dailyWeatherOptions) {
+    if(daily?.time === undefined) throw new Error("weather response is missing daily.time");
+    
     let days = daily.time.map((date, index) => {
         const day = { date: date };
 
@@ -89,6 +91,7 @@ function convertDailytoDays(daily, dailyWeatherOptions) {
         })
         return day;
     })
+    
     return days;
 }
 
