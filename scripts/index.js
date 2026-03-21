@@ -30,6 +30,7 @@ async function formSubmit(event) {
         return;
     }
 
+    showStatus();
     try {
         const location = await api.getCoords(zip);
         const weather = await api.getWeather(location, currentWeatherOptions, dailyWeatherOptions);
@@ -39,6 +40,7 @@ async function formSubmit(event) {
         console.error(error);
         alert("Something went wrong retrieving data. Please contact the developer, and try again later");
     }
+    hideStatus();
 }
 
 function iconFromCode(code) {
@@ -124,6 +126,14 @@ function fillData(data) {
         const el = document.getElementById(key);
         if (el) el.textContent = value;
     })
+}
+
+function showStatus() {
+    document.getElementsByClassName("status-box")[0].style.display = "block";
+}
+
+function hideStatus() {
+    document.getElementsByClassName("status-box")[0].style.display = "none";
 }
 
 function addHandlers() {
