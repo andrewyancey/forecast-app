@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Current and Forecast Weather</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -15,8 +20,8 @@
     <div class="app-container">
         <form id="input-form">
             <h2>Enter your zip code</h2>
-            <input type="text" id="zip" />
-            <input type="submit" value="Get Forecast">
+            <input type="text" id="zip" class="text-input" />
+            <input type="submit" value="Get Forecast" class="button">
         </form>
         <div class="status-box">
             <p class="status">Fetching data</p>
@@ -53,43 +58,57 @@
                             <div class="card-col">
                                 <div class="card-row">
                                     <span>Temperature: </span>
-                                    <span id="temp"></span>
-                                    <span class="data-unit">&degF</span>
+                                    <span class="value-pair">
+                                        <span id="temp"></span>
+                                        <span class="data-unit">&degF</span>
+                                    </span>
                                 </div>
                                 <div class="card-row">
                                     <span>Humidity: </span>
-                                    <span id="humidity"></span>
-                                    <span class="data-unit">%</span>
+                                    <span class="value-pair">
+                                        <span id="humidity"></span>
+                                        <span class="data-unit">%</span>
+                                    </span>
                                 </div>
                                 <div class="card-row">
                                     <span>Pressure: </span>
-                                    <span id="pressure"></span>
-                                    <span class="data-unit">mb</span>
+                                    <span class="value-pair">
+                                        <span id="pressure"></span>
+                                        <span class="data-unit">mb</span>
+                                    </span>
                                 </div>
                                 <div class="card-row">
                                     <span>Precipitation: </span>
-                                    <span id="precipitation"></span>
-                                    <span class="data-unit">"</span>
+                                    <span class="value-pair">
+                                        <span id="precipitation"></span>
+                                        <span class="data-unit">"</span>
+                                    </span>
                                 </div>
                                 <div class="card-row">
                                     <span>Wind Speed: </span>
-                                    <span id="wind-speed"></span>
-                                    <span class="data-unit">Knots</span>
+                                    <span class="value-pair">
+                                        <span id="wind-speed"></span>
+                                        <span class="data-unit">Knots</span>
+                                    </span>
                                 </div>
                                 <div class="card-row">
                                     <span>Wind Direction: </span>
-                                    <span id="wind-direction"></span>
-                                    <span class="data-unit">&deg</span>
+                                    <span class="value-pair">
+                                        <span id="wind-direction"></span>
+                                        <span class="data-unit">&deg</span>
+                                    </span>
                                 </div>
                                 <div class="card-row">
                                     <span>Wind Gusts: </span>
-                                    <span id="wind-gusts"></span>
-                                    <span class="data-unit">Knots</span>
+                                    <span class="value-pair">
+                                        <span id="wind-gusts"></span>
+                                        <span class="data-unit">Knots</span>
+                                    </span>
                                 </div>
                             </div>
                             <div class="card-col">
                                 <div class="card-row">
-                                    <span>Weather Code: </span>
+                                    <span>Weather: </span>
                                     <span id="weather-text"></span>
                                 </div>
                                 <div class="icon-container">
@@ -100,42 +119,54 @@
                     </div>
                 </div>
                 <div class="container-row forecast-row">
-                    <div class="card">
+                    <div class="forecast-section">
                         <h2>Daily Forecasts</h2>
                         <div class="daily-forecast-container">
-                            <div class="forecast-section" id="daily-day1">
+                            <div class="card" id="daily-day1">
                                 <h3 class="date">Day One</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
@@ -147,39 +178,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="forecast-section" id="daily-day2">
+                            <div class="card" id="daily-day2">
                                 <h3 class="date">Day Two</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
@@ -191,39 +234,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="forecast-section" id="daily-day3">
+                            <div class="card" id="daily-day3">
                                 <h3 class="date">Day Three</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
@@ -235,39 +290,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="forecast-section" id="daily-day4">
+                            <div class="card" id="daily-day4">
                                 <h3 class="date">Day Four</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
@@ -279,39 +346,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="forecast-section" id="daily-day5">
+                            <div class="card" id="daily-day5">
                                 <h3 class="date">Day Five</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
@@ -323,39 +402,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="forecast-section" id="daily-day6">
+                            <div class="card" id="daily-day6">
                                 <h3 class="date">Day Six</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
@@ -367,39 +458,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="forecast-section" id="daily-day7">
+                            <div class="card" id="daily-day7">
                                 <h3 class="date">Day Seven</h3>
                                 <div class="forecast-details">
                                     <div class="card-col">
                                         <div class="card-row">
                                             <span>Daily High: </span>
-                                            <span class="daily-temperature-max"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-max"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Daily Low: </span>
-                                            <span class="daily-temperature-min"></span>
-                                            <span class="data-unit">&degF</span>
+                                            <span class="value-pair">
+                                                <span class="daily-temperature-min"></span>
+                                                <span class="data-unit">&degF</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Precipitation: </span>
-                                            <span class="daily-precipitation-max"></span>
-                                            <span class="data-unit">%</span>
+                                            <span class="value-pair">
+                                                <span class="daily-precipitation-max"></span>
+                                                <span class="data-unit">%</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Speed: </span>
-                                            <span class="daily-wind-speed"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-speed"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Direction: </span>
-                                            <span class="daily-wind-direction"></span>
-                                            <span class="data-unit">&deg</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-direction"></span>
+                                                <span class="data-unit">&deg</span>
+                                            </span>
                                         </div>
                                         <div class="card-row">
                                             <span>Wind Gusts: </span>
-                                            <span class="daily-wind-gusts"></span>
-                                            <span class="data-unit">Knots</span>
+                                            <span class="value-pair">
+                                                <span class="daily-wind-gusts"></span>
+                                                <span class="data-unit">Knots</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="card-col">
